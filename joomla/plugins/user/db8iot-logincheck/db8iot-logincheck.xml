@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5" type="plugin" group="user" method="upgrade">
+	<name>plg_user_db8iot_logincheck</name>
+	<author>Peter Martin</author>
+	<creationDate>May 2016</creationDate>
+	<copyright>(C) 2005 - 2016 by Peter Martin. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>joomla@db8.nl</authorEmail>
+	<authorUrl>www.db8.nl</authorUrl>
+	<version>0.0.1</version>
+	<description>PLG_USER_DB8IOT_LOGINCHECK_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="db8iot-logincheck">db8iot-logincheck.php</filename>
+		<folder>language</folder>
+		<folder>phpMQTT</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+
+				<field
+						name="mqttbroker"
+						type="text"
+						default="192.168.3.1"
+						description="PLG_USER_DB8IOT_LOGINCHECK_MQTTBROKER_DESC"
+						label="PLG_USER_DB8IOT_LOGINCHECK_MQTTBROKER_LABEL"
+				/>
+				<field
+						name="mqttport"
+						type="text"
+						default="1883"
+						description="PLG_USER_DB8IOT_LOGINCHECK_MQTTPORT_DESC"
+						label="PLG_USER_DB8IOT_LOGINCHECK_MQTTPORT_LABEL"
+				/>
+
+				<field
+						name="mqttclient"
+						type="text"
+						default="Joomla website"
+						description="PLG_USER_DB8IOT_LOGINCHECK_MQTTCLIENT_DESC"
+						label="PLG_USER_DB8IOT_LOGINCHECK_MQTTCLIENT_LABEL"
+				/>
+
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>
