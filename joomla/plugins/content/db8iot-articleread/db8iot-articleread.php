@@ -19,7 +19,7 @@ class PlgContentDb8iotArticleRead extends JPlugin
 {
 	public function onContentAfterDisplay($context, &$article, &$params, $limitstart)
 	{
-		if ($context == 'com_content.article')
+		/*if ($context == 'com_content.article')
 		{
 			require("phpMQTT/phpMQTT.php");
 			//thumbnail
@@ -38,7 +38,7 @@ class PlgContentDb8iotArticleRead extends JPlugin
 
  				$MQTT->close();
 			}
-		}
+		}*/
 		return;
 	}
 }

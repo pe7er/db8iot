@@ -19,55 +19,55 @@
 		<fields name="params">
 			<fieldset name="basic">
 
-				<field type="spacer" name="mqtt" label="MQTT Settings" />
-				
+				<field type="spacer" name="mqtt" label="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTT_SETTINGS" />
+
 				<field
 						name="mqttbroker"
 						type="text"
 						default="192.168.3.1"
-						description="PLG_USER_DB8IOT_ARTICLEREAD_MQTTBROKER_DESC"
-						label="PLG_USER_DB8IOT_ARTICLEREAD_MQTTBROKER_LABEL"
+						description="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTTBROKER_DESC"
+						label="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTTBROKER_LABEL"
 				/>
 				<field
 						name="mqttport"
 						type="text"
 						default="1883"
-						description="PLG_USER_DB8IOT_ARTICLEREAD_MQTTPORT_DESC"
-						label="PLG_USER_DB8IOT_ARTICLEREAD_MQTTPORT_LABEL"
+						description="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTTPORT_DESC"
+						label="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTTPORT_LABEL"
 				/>
 
 				<field
 						name="mqttclient"
 						type="text"
 						default="Joomla website"
-						description="PLG_USER_DB8IOT_ARTICLEREAD_MQTTCLIENT_DESC"
-						label="PLG_USER_DB8IOT_ARTICLEREAD_MQTTCLIENT_LABEL"
+						description="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTTCLIENT_DESC"
+						label="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTTCLIENT_LABEL"
 				/>
 
-				<field type="spacer" name="topic" label="Topic" />
-				
+				<field type="spacer" name="topic" label="PLG_CONTENT_DB8IOT_ARTICLEREAD_MQTT_TOPIC" />
+
 				<field
 						name="channel"
 						type="text"
 						default="test"
-						description="PLG_USER_DB8IOT_ARTICLEREAD_CHANNEL_DESC"
-						label="PLG_USER_DB8IOT_ARTICLEREAD_CHANNEL_LABEL"
+						description="PLG_CONTENT_DB8IOT_ARTICLEREAD_CHANNEL_DESC"
+						label="PLG_CONTENT_DB8IOT_ARTICLEREAD_CHANNEL_LABEL"
 				/>
 
 				<field
 						name="message"
 						type="text"
 						default="Another hit"
-						description="PLG_USER_DB8IOT_ARTICLEREAD_MESSAGE_DESC"
-						label="PLG_USER_DB8IOT_ARTICLEREAD_MESSAGE_LABEL"
+						description="PLG_CONTENT_DB8IOT_ARTICLEREAD_MESSAGE_DESC"
+						label="PLG_CONTENT_DB8IOT_ARTICLEREAD_MESSAGE_LABEL"
 				/>
 
 				<field
 						name="qos"
 						type="text"
-						default="Another hit"
-						description="PLG_USER_DB8IOT_ARTICLEREAD_QOS_DESC"
-						label="PLG_USER_DB8IOT_ARTICLEREAD_QOS_LABEL"
+						default="0"
+						description="PLG_CONTENT_DB8IOT_ARTICLEREAD_QOS_DESC"
+						label="PLG_CONTENT_DB8IOT_ARTICLEREAD_QOS_LABEL"
 				/>
 			</fieldset>
 		</fields>
