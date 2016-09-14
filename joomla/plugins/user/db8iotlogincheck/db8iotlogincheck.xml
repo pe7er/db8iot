@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5" type="plugin" group="user" method="upgrade">
+	<name>plg_user_db8iotlogincheck</name>
+	<author>Peter Martin</author>
+	<creationDate>September 2016</creationDate>
+	<copyright>(C) 2005 - 2016 by Peter Martin. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>joomla@db8.nl</authorEmail>
+	<authorUrl>www.db8.nl</authorUrl>
+	<version>0.0.1</version>
+	<description>PLG_USER_DB8IOTLOGINCHECK_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="db8iotlogincheck">db8iotlogincheck.php</filename>
+		<folder>language</folder>
+		<folder>phpMQTT</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+
+				<field type="spacer" name="mqtt" label="PLG_USER_DB8IOTLOGINCHECK_MQTT_SETTINGS" />
+
+				<field
+						name="mqttbroker"
+						type="text"
+						default="192.168.3.1"
+						description="PLG_USER_DB8IOTLOGINCHECK_MQTTBROKER_DESC"
+						label="PLG_USER_DB8IOTLOGINCHECK_MQTTBROKER_LABEL"
+				/>
+				<field
+						name="mqttport"
+						type="text"
+						default="1883"
+						description="PLG_USER_DB8IOTLOGINCHECK_MQTTPORT_DESC"
+						label="PLG_USER_DB8IOTLOGINCHECK_MQTTPORT_LABEL"
+				/>
+
+				<field
+						name="mqttclient"
+						type="text"
+						default="Joomla website"
+						description="PLG_USER_DB8IOTLOGINCHECK_MQTTCLIENT_DESC"
+						label="PLG_USER_DB8IOTLOGINCHECK_MQTTCLIENT_LABEL"
+				/>
+
+				<field type="spacer" name="topic" label="PLG_USER_DB8IOTLOGINCHECK_MQTT_TOPIC" />
+
+				<field
+						name="channel"
+						type="text"
+						default="test"
+						description="PLG_USER_DB8IOTLOGINCHECK_CHANNEL_DESC"
+						label="PLG_USER_DB8IOTLOGINCHECK_CHANNEL_LABEL"
+				/>
+
+				<field
+						name="extramessage"
+						type="text"
+						default=""
+						description="PLG_USER_DB8IOTLOGINCHECK_EXTRAMESSAGE_DESC"
+						label="PLG_USER_DB8IOTLOGINCHECK_EXTRAMESSAGE_LABEL"
+				/>
+
+				<field
+						name="qos"
+						type="text"
+						default="0"
+						description="PLG_USER_DB8IOTLOGINCHECK_QOS_DESC"
+						label="PLG_USER_DB8IOTLOGINCHECK_QOS_LABEL"
+				/>
+
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>

@@ -15,30 +15,38 @@ defined('_JEXEC') or die;
  *
  * @since  May 2016
  */
-class PlgContentDb8iotArticleRead extends JPlugin
+class PlgContentDb8iotarticleread extends JPlugin
 {
 	public function onContentAfterDisplay($context, &$article, &$params, $limitstart)
 	{
-		/*if ($context == 'com_content.article')
+		if ($context == 'com_content.article')
 		{
-			require("phpMQTT/phpMQTT.php");
-			//thumbnail
 			$MQTTBroker = $this->params->get('mqttbroker');
 			$MQTTPort = $this->params->get('mqttport');
 			$MQTTClient = $this->params->get('mqttclient');
-			$channel = $this->params->get('channel'); // test
-			$message  = $this->params->get('message'); // green_blink
-			$QoS  = $this->params->get('qos'); // 0
+
+			require("phpMQTT/phpMQTT.php");
 
 			$MQTT = new phpMQTT($MQTTBroker, $MQTTPort, $MQTTClient);
 
 			if ($MQTT->connect()) {
-				$MQTT->publish("test", "Article `" . $article->title  . "` is being read at ".date("r"),0);
-				$MQTT->publish($channel, $message, $QoS);
+
+				$channel = $this->params->get('channel'); // test
+
+				$QoS  = $this->params->get('qos'); // 0
+
+				$message =  "Article `" . $article->title  . " (ID: " . $article->id  . ")` is visited by by IP: ". $_SERVER['REMOTE_ADDR'] ." at ".date("r");
+				$MQTT->publish($channel, $message , $QoS);
+
+				$extramessage  = $this->params->get('extramessage'); // green_blink
+				if ($extramessage)
+				{
+					$MQTT->publish($channel, $extramessage, $QoS);
+				}
 
  				$MQTT->close();
 			}
-		}*/
+		}
 		return;
 	}
 }

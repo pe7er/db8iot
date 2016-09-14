@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  *
  * @since  May 2016
  */
-class PlgUserDb8iot extends JPlugin
+class PlgUserDb8iotLoginCheck extends JPlugin
 {
 	public function onUserLoginFailure($response)
 	{
@@ -52,8 +52,17 @@ class PlgUserDb8iot extends JPlugin
 
 		require("phpMQTT/phpMQTT.php");
 
+		?>
+		<pre><?php
+		echo __FILE__ . '::' . __LINE__ . ':: ';
+		echo ': ';
+		echo '<div style="font-size: 1.5em;">';
+		print_r($errormsg);
+		echo '</div>';
+		?></pre><?php
+die("stop");
 
-		$mqtt = new phpMQTT("192.168.0.20", 1883, "phpMQTT Pub Example"); //Change client name to something unique
+		$mqtt = new phpMQTT("192.168.0.24", 1883, "phpMQTT Pub Example"); //Change client name to something unique
 
 		if ($mqtt->connect()) {
 			$mqtt->publish("test", $errormsg . " and Hello JanBeyond at ".date("r"),0);
