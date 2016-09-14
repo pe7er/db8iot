@@ -10,7 +10,7 @@
 	<version>0.0.1</version>
 	<description>PLG_CONTENT_DB8IOT_ARTICLEREAD_XML_DESCRIPTION</description>
 	<files>
-		<filename plugin="db8iot_articleread">db8iot_articleread.php</filename>
+		<filename plugin="db8iot-articleread">db8iot-articleread.php</filename>
 		<folder>language</folder>
 		<folder>phpMQTT</folder>
 	</files>

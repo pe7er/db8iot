@@ -2,7 +2,7 @@
 <extension version="3.5" type="plugin" group="user" method="upgrade">
 	<name>plg_user_db8iot_logincheck</name>
 	<author>Peter Martin</author>
-	<creationDate>May 2016</creationDate>
+	<creationDate>September 2016</creationDate>
 	<copyright>(C) 2005 - 2016 by Peter Martin. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
 	<authorEmail>joomla@db8.nl</authorEmail>
