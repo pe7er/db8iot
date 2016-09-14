@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Class PlgUserDb8iot
+ * Class PlgUserDb8iotLoginCheck
  *
  * @since  May 2016
  */
@@ -50,26 +50,31 @@ class PlgUserDb8iotLoginCheck extends JPlugin
 		$errormsg = "At " . JURI::root() . " user " . $response['username'] . " from IP " . $_SERVER['REMOTE_ADDR']
 			. " and got ". $errorlog['status'] . $errorlog['comment'] . " at " . date("Y-m-d H:i:s") ;
 
+
+		$MQTTBroker = $this->params->get('mqttbroker');
+		$MQTTPort = $this->params->get('mqttport');
+		$MQTTClient = $this->params->get('mqttclient');
+
 		require("phpMQTT/phpMQTT.php");
 
-		?>
-		<pre><?php
-		echo __FILE__ . '::' . __LINE__ . ':: ';
-		echo ': ';
-		echo '<div style="font-size: 1.5em;">';
-		print_r($errormsg);
-		echo '</div>';
-		?></pre><?php
-die("stop");
+		$MQTT = new phpMQTT($MQTTBroker, $MQTTPort, $MQTTClient);
 
-		$mqtt = new phpMQTT("192.168.0.24", 1883, "phpMQTT Pub Example"); //Change client name to something unique
+		if ($MQTT->connect()) {
 
-		if ($mqtt->connect()) {
-			$mqtt->publish("test", $errormsg . " and Hello JanBeyond at ".date("r"),0);
-			$mqtt->publish("test", 'red_on',0);
+			$channel = $this->params->get('channel'); // test
 
-			//$mqtt->publish("test","Hello World! at ".date("r"),0);
-			$mqtt->close();
+			$QoS  = $this->params->get('qos'); // 0
+
+			$MQTT->publish($channel, $errormsg , $QoS);
+
+			$extramessage  = $this->params->get('extramessage'); // red_on
+			if ($extramessage)
+			{
+				$MQTT->publish($channel, $extramessage, $QoS);
+			}
+
+			$MQTT->close();
 		}
+
 	}
 }
