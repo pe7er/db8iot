@@ -61,6 +61,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(0, 1);   
     Serial.println("Switching LED OFF");    
   }
+  if (msgString == "green_on"){    
+    digitalWrite(0, 0);   
+    Serial.println("Switching LED ON"); 
+  }
+  if (msgString == "green_off"){
+    digitalWrite(0, 1);   
+    Serial.println("Switching LED OFF"); 
+  }
+
+
 }
  
 WiFiClient wifiClient;
