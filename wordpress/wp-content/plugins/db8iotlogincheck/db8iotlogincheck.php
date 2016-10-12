@@ -2,7 +2,7 @@
 /**
  * Plugin Name: db8 IoT Login Check
  * Plugin URI: https://github.com/pe7er/db8iot
- * Description: This plugin triggers MQTT Communication after a faulty login attempt
+ * Description: This plugin uses MQTT Communication to give a warning after a faulty login attempt
  * Version: 0.0.1
  * Author: Peter Martin
  * Author URI: http://db8.nl/
@@ -25,44 +25,41 @@
 defined('ABSPATH') or die();
 
 
-/* my first attempt */
+add_filter( /**
+ * @param $error
+ *
+ * @return string
+ */
+	'login_errors', function( $error) {
+	global $errors;
+	$err_codes = $errors->get_error_codes();
 
-//$errors = new WP_Error();
-// ...
-//login_header( __( 'Reset Password', 'textdomain' ), '<p class="message reset-pass">' . __( 'Enter your new password below.', 'textdomain' ) . '</p>', $errors );
+	if (in_array('invalid_username', $err_codes, true))
+	{
+		$error = '<strong>ERROR</strong>: Invalid username.';
 
-// https://developer.wordpress.org/reference/hooks/login_errors/
-//$myError = apply_filters( 'login_errors', $errors);
+		// Send MQTT message red_on
+		// Send MQTT message $error
 
-
-function custom_login() {
-	$creds = array();
-	//$creds['user_login'] = 'example';
-	//$creds['user_password'] = 'plaintextpw';
-	$creds['remember'] = false;
-	$user              = wp_signon( $creds, false );
-	if ( is_wp_error( $user ) ) {
-		echo "MQTT here" . $user->get_error_message();
 	}
-}
 
-// run it before the headers and cookies are sent
-add_action( 'after_setup_theme', 'custom_login' );
+	// Incorrect password.
+	// Default: '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong>
+	// is incorrect. <a href="%2$s">Lost your password</a>?'
+	if ( in_array('incorrect_password', $err_codes, true) )
+	{
+		$error = '<strong>ERROR</strong>: The password you entered is incorrect.';
 
-/*
+		die ("wrong password!!!");
+		// Send MQTT message red_on
+		// Send MQTT message $error
 
-print_r($myError);
-
-print"<pre>";
-print_r($_POST);
-print"</pre>";
-
-die("stop!");
-
-	if ($myError){
-		die ('myError');
 	}
-*/
+
+	return $error;
+
+	}
+);
 
 /**
  * MQTT
