@@ -71,30 +71,32 @@ die("stop!");
  */
 function MQTT()
 {
-	$MQTTBroker = $this->params->get( 'mqttbroker' );
-	$MQTTPort   = $this->params->get( 'mqttport' );
-	$MQTTClient = $this->params->get( 'mqttclient' );
+	$MQTTBroker = $this->params->get('mqttbroker');
+	$MQTTPort   = $this->params->get('mqttport');
+	$MQTTClient = $this->params->get('mqttclient');
 
-	require( "phpMQTT/phpMQTT.php" );
+	require __DIR__ . "phpMQTT/phpMQTT.php";
 
-	$MQTT = new phpMQTT( $MQTTBroker, $MQTTPort, $MQTTClient );
+	$MQTT = new phpMQTT($MQTTBroker, $MQTTPort, $MQTTClient);
 
 	if ( $MQTT->connect() )
 	{
-		// Test
+		// Channel: Test
 		$channel = $this->params->get('channel');
 
-		// Default  QoS = 0
+		// Default QoS = 0
 		$QoS = $this->params->get('qos');
 
 		$MQTT->publish($channel, $errormsg, $QoS);
 
-		$extramessage = $this->params->get( 'extramessage' ); // red_on
-		if ( $extramessage ) {
-			$MQTT->publish( $channel, $extramessage, $QoS );
+		// Eg red_on
+		$extramessage = $this->params->get('extramessage');
+
+		if ($extramessage)
+		{
+			$MQTT->publish($channel, $extramessage, $QoS);
 		}
 
 		$MQTT->close();
 	}
-
 }
