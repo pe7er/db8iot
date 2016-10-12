@@ -25,7 +25,8 @@
 defined('ABSPATH') or die();
 
 
-add_filter( /**
+add_filter(
+	/**
  * @param $error
  *
  * @return string
@@ -39,21 +40,25 @@ add_filter( /**
 		$error = '<strong>ERROR</strong>: Invalid username.';
 
 		// Send MQTT message red_on
-		// Send MQTT message $error
+		sendMQTT('red_on');
 
+		// Send MQTT message $error
+		sendMQTT($error);
 	}
 
-	// Incorrect password.
-	// Default: '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong>
-	// is incorrect. <a href="%2$s">Lost your password</a>?'
+	/* Incorrect password.
+	   Default: '<strong>ERROR</strong>: The password you entered for the username <strong>%1$s</strong>
+	   is incorrect. <a href="%2$s">Lost your password</a>?'
+	*/
 	if ( in_array('incorrect_password', $err_codes, true) )
 	{
 		$error = '<strong>ERROR</strong>: The password you entered is incorrect.';
 
-		die ("wrong password!!!");
 		// Send MQTT message red_on
-		// Send MQTT message $error
+		sendMQTT('red_on');
 
+		// Send MQTT message $error
+		sendMQTT($error);
 	}
 
 	return $error;
@@ -61,14 +66,21 @@ add_filter( /**
 	}
 );
 
+
 /**
- * MQTT
+ * Send MQTT message
+ * 
+ * @param   $error  string  Error Message
  *
- * @return
+ * @return void
  */
-function MQTT()
+function sendMQTT($error)
 {
 	$MQTTBroker = $this->params->get('mqttbroker');
+	$MQTTPort   = $this->params->get('mqttport');
+	$MQTTClient = $this->params->get('mqttclient');
+
+	$MQTTBroker = '192.168.3.1';
 	$MQTTPort   = $this->params->get('mqttport');
 	$MQTTClient = $this->params->get('mqttclient');
 
@@ -84,7 +96,7 @@ function MQTT()
 		// Default QoS = 0
 		$QoS = $this->params->get('qos');
 
-		$MQTT->publish($channel, $errormsg, $QoS);
+		$MQTT->publish($channel, $error, $QoS);
 
 		// Eg red_on
 		$extramessage = $this->params->get('extramessage');
@@ -96,4 +108,6 @@ function MQTT()
 
 		$MQTT->close();
 	}
+
+	return;
 }
