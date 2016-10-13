@@ -6,7 +6,15 @@
 - Arduino
 - ESP8266
 - Joomla plugins
+- WordPress plugins
 
-### Presentation
-- Slides of my "Communicating with Internet of Things" presentation done at the European Joomla conference "JandBeyond" in Barcelona on Sunday 22 May 2016: http://slides.db8.nl/jab16-communicating-with-iot.html
-- Youtube video of that JandB presentation: https://www.youtube.com/watch?v=1jLpZ5C0FoM
+### Presentations
+I've done a couple of presentations about this subject titled "Communicating with Internet of Things".
+
+  *  JoomlaDay™ Deutschland 2016 in Leipzig, Germany on Saturday 17 September 2016:
+     * Slides: http://slides.db8.nl/jd16de-communicating-with-iot.html
+     * Video: https://youtu.be/2QD8-ed2hFg?t=12s
+
+  *  JandBeyond 2016 ()European Joomla conference) in Barcelona, Spain on Sunday 22 May 2016:
+     * Slides: http://slides.db8.nl/jab16-communicating-with-iot.html
+     * Video: https://www.youtube.com/watch?v=1jLpZ5C0FoM
