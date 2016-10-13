@@ -23,8 +23,8 @@ const char* ssid = "Skynet";
 const char* password = "";
 const char* mqtt_server = "192.168.3.1";
 const char* clientID = "DHT22";
-const char* outTopic1 = "room/temp";
-const char* outTopic2 = "room/hum";
+const char* outTopic1 = "test";
+const char* outTopic2 = "test";
 const char* inTopic = "test";
 
 // Initialize DHT sensor 
@@ -77,15 +77,15 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("], ");
   Serial.println(message);
 
-  if(message == "temp"){
+  if(message == "temp?"){
     gettemperature();
-    Serial.print("Sending temperature:");
+    Serial.print("Temperature = ");
     Serial.println(temp_c);
     dtostrf(temp_c , 2, 2, msg);
     client.publish(outTopic1, msg);
-  } else if (message == "hum"){
+  } else if (message == "hum?"){
     gettemperature();
-    Serial.print("Sending humidity:");
+    Serial.print("Humidity = ");
     Serial.println(humidity);
     dtostrf(humidity , 2, 2, msg);
     client.publish(outTopic2, msg);
