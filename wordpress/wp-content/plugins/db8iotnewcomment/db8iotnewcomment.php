@@ -1,33 +1,34 @@
 <?php
 /**
- * Plugin Name: db8 IoT Login Check
+ * Plugin Name: db8 IoT New Comment
  * Plugin URI: https://github.com/pe7er/db8iot
- * Description: This plugin uses MQTT Communication to give a warning after a faulty login attempt
+ * Description: This plugin triggers MQTT Communication when a new comment is posted
  * Version: 0.0.1
  * Author: Peter Martin
  * Author URI: http://db8.nl/
  * License: GNU General Public License version 2 or later
  *
- * Documentation used: https://codex.wordpress.org/Plugin_API/Filter_Reference/login_errors
+ * Documentation used: https://developer.wordpress.org/reference/hooks/comment_post/
  */
 
-defined('ABSPATH') or die();
 
-add_action( 'admin_menu', 'db8iotLoginCheck_menu' );
+defined( 'ABSPATH' ) or die( );
 
-function db8iotLoginCheck_menu() {
-	add_options_page( 'plugins.php', 'db8 IoT Login Check', 'manage_options', 'db8IoTLoginCheck', 'db8iotLoginCheck_options' );
+add_action( 'admin_menu', 'db8iotNewComment_menu' );
+
+function db8iotNewComment_menu() {
+	add_options_page( 'plugins.php', 'db8 IoT Login Check', 'manage_options', 'db8IoTLoginCheck', 'db8iotNewComment_options' );
 }
 
-function db8iotLoginCheck_options()
+function db8iotNewComment_options()
 {
 	if (!current_user_can('manage_options'))
 	{
 		wp_die(__('You do not have sufficient permissions to access this page.'));
 	}
 	echo '<div class="wrap">';
-	echo '<h1>db8 IoT Login Check</h1>';
-	echo '<p>This plugin triggers MQTT Communication after a faulty login attempt.</p>';
+	echo '<h1>db8 IoT New Comment</h1>';
+	echo '<p>This plugin triggers MQTT Communication after a new comment has been added.</p>';
 	?>
 	<p>
 		<strong>Current settings (Hardcoded)</strong><br>
@@ -35,35 +36,27 @@ function db8iotLoginCheck_options()
 		MQTTPort   = 1883<br>
 		MQTTClient = WordPress website<br>
 		QoS = 0<br>
-		extra message = red_on<br>
+		extra message = green_blink<br>
 	</p>
-<?php
+	<?php
 	echo '</div>';
 }
 
-/**
- * @param $error
- *
- * @return string
- */
-add_filter('login_errors', function( $error) {
-	global $errors;
-	$err_codes = $errors->get_error_codes();
+function show_message_function( $comment_ID, $comment_approved ) {
+	if( 1 === $comment_approved ){
+		//function logic goes here
 
-	if (in_array('invalid_username', $err_codes, true))
-	{
 		// Send MQTT message $error
-		sendMQTT('Wrong Username');
-	}
-	if ( in_array('incorrect_password', $err_codes, true) )
-	{
-		// Send MQTT message $error
-		sendMQTT('Wrong Password');
-	}
+		echo "MQTT";
+		sendGreenMQTT('Comment approved');
 
-	return $error;
+	}else{
+		echo "MQTT not approved";
+		sendGreenMQTT('New Comment');
 	}
-);
+}
+
+add_action( 'comment_post', 'show_message_function', 10, 0 );
 
 /**
  * Send MQTT message
@@ -72,7 +65,7 @@ add_filter('login_errors', function( $error) {
  *
  * @return void
  */
-function sendMQTT($error)
+function sendGreenMQTT($error)
 {
 	//$MQTTBroker = '192.168.3.1';
 	$MQTTBroker = '192.168.0.29';
@@ -90,7 +83,7 @@ function sendMQTT($error)
 		// Default QoS = 0
 		$QoS = 0;
 		// Eg red_on
-		$extramessage = 'red_on';
+		$extramessage = 'green_blink';
 
 		$MQTT->publish($channel, $error, $QoS);
 
