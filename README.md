@@ -5,6 +5,7 @@
 - MQTT
 - Arduino
 - ESP8266
+- python
 - Joomla plugins
 - WordPress plugins
 
