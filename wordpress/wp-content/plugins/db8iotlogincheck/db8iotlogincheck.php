@@ -7,23 +7,10 @@
  * Author: Peter Martin
  * Author URI: http://db8.nl/
  * License: GNU General Public License version 2 or later
- *
- * db8 IoT Login Check is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * any later version.
- *
- * db8 IoT Login Check is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with {Plugin Name}. If not, see {License URI}.
+ * Documentation used: https://codex.wordpress.org/Plugin_API/Filter_Reference/login_errors
  */
 
 defined('ABSPATH') or die();
-
 
 add_filter(
 	/**
@@ -66,10 +53,9 @@ add_filter(
 	}
 );
 
-
 /**
  * Send MQTT message
- * 
+ *
  * @param   $error  string  Error Message
  *
  * @return void
