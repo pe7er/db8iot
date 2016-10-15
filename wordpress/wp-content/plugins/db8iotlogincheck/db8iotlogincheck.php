@@ -35,7 +35,7 @@ function db8iotLoginCheck_options()
 		MQTTPort   = 1883<br>
 		MQTTClient = WordPress website<br>
 		QoS = 0<br>
-		extra message = red_on<br>
+		extra message = red_blink<br>
 	</p>
 <?php
 	echo '</div>';
@@ -90,7 +90,7 @@ function sendMQTT($error)
 		// Default QoS = 0
 		$QoS = 0;
 		// Eg red_on
-		$extramessage = 'red_on';
+		$extramessage = 'red_blink';
 
 		$MQTT->publish($channel, $error, $QoS);
 
