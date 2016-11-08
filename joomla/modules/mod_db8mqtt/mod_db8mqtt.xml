@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" type="module" client="site" method="upgrade">
+    <name>MOD_DB8MQTT</name>
+    <author>Peter Martin</author>
+    <creationDate>November 2016</creationDate>
+    <copyright>(C) 2005 - 2016 by Peter Martin. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <authorEmail>joomla@db8.nl</authorEmail>
+    <authorUrl>www.db8.nl</authorUrl>
+    <version>0.0.1</version>
+    <description>MOD_DB8MQTT_XML_DESCRIPTION</description>
+    <files>
+        <filename module="mod_db8mqtt">mod_db8mqtt.php</filename>
+        <folder>assets</folder>
+        <folder>language</folder>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+
+                <field type="spacer" name="mqtt" label="MOD_DB8MQTT_MQTT_SETTINGS" />
+
+                <field
+                        name="mqttbroker"
+                        type="text"
+                        default="192.168.3.1"
+                        description="MOD_DB8MQTT_MQTTBROKER_DESC"
+                        label="MOD_DB8MQTT_MQTTBROKER_LABEL"
+                />
+                <field
+                        name="mqttport"
+                        type="text"
+                        default="1883"
+                        description="MOD_DB8MQTT_MQTTPORT_DESC"
+                        label="MOD_DB8MQTT_MQTTPORT_LABEL"
+                />
+
+                <field
+                        name="mqtttopic"
+                        type="text"
+                        default="test"
+                        description="MOD_DB8MQTT_TOPIC_DESC"
+                        label="MOD_DB8MQTT_TOPIC_LABEL"
+                />
+
+            </fieldset>
+        </fields>
+    </config>
+
+</extension>
