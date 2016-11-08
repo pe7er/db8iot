@@ -14,9 +14,14 @@
 - Software   
    - C++ (for Arduino / ESP8266)
    - Python (for Raspberry Pi)
-   - Joomla plugins
-   - WordPress plugins - **Note**: the code is **not** a good example of 
-a WordPress plugin. WordPress development is new to me and I did not have time enough 
+   - Joomla 
+        - Module:
+            - uses Websockets to display MQTT messages in the website
+        - Plugins:
+            - Content Plugin
+            - System Plugin 
+   - WordPress
+        - Plugins **Note**: the code for these Plugins is **not** a good example of a WordPress plugin. WordPress development is new to me and I did not have time enough 
 to dig into plugin parameters + default values. Consider it as a proof-of-concept which uses **hardcoded parameters** 
 (Pull Request are welcome! :-)
 
