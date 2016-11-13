@@ -1,0 +1,6 @@
+; db8iot
+; Copyright (C) 2005 - 2016 by Peter Martin. All rights reserved.
+; License GNU General Public License version 2 or later.
+
+MOD_DB8MQTT="Module db8 MQTT"
+MOD_DB8MQTT_XML_DESCRIPTION="Ce module permet d’afficher MQTT communication sur certains sujets"
