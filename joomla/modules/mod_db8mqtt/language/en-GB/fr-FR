@@ -1,0 +1,14 @@
+; db8iot
+; Copyright (C) 2005 - 2016 by Peter Martin. All rights reserved.
+; License GNU General Public License version 2 or later.
+
+MOD_DB8MQTT="Module db8 MQTT"
+MOD_DB8MQTT_XML_DESCRIPTION="Ce module permet d’afficher MQTT communication sur certains sujets"
+
+MOD_DB8MQTT_MQTT_SETTINGS="Paramètres MQTT"
+MOD_DB8MQTT_MQTTBROKER_DESC="Adresse IP ou nom du serveur MQTT Broker"
+MOD_DB8MQTT_MQTTBROKER_LABEL="Broker"
+MOD_DB8MQTT_MQTTPORT_DESC="Port du MQTT broker (Par défaut : 1883, ou 9001 pour Websocket)"
+MOD_DB8MQTT_MQTTPORT_LABEL="Port"
+MOD_DB8MQTT_TOPIC_DESC="Sujet MQTT pour lequel communiquer les messages"
+MOD_DB8MQTT_TOPIC_LABEL="Sujet"
