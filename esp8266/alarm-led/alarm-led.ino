@@ -54,7 +54,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(2, 1);   
     Serial.println("Switching LED OFF"); 
   }
-    if (msgString == "green_blink"){    
+   if (msgString == "red_blink"){
+    digitalWrite(2, 0);
+    Serial.println("Switching LED ON");
+    delay(500);
+    digitalWrite(2, 1);
+    Serial.println("Switching LED OFF");
+  }
+  if (msgString == "green_blink"){
     digitalWrite(0, 0);   
     Serial.println("Switching LED ON"); 
     delay(500);
@@ -118,7 +125,7 @@ void setup() {
  
   //  connection to broker script.
   if (client.connect("arduinoClient")) {
-    client.publish("test","hello, I am an alarm LED for JandBeyond");
+    client.publish("test","hello, I am an alarm LED");
     client.subscribe(topic);
   }
 

@@ -26,7 +26,8 @@ $MQTTTopic = $params->get('mqtttopic'); // test, '#'
 	var reconnectTimeout = 2000;
 
 	host = '<?php echo $MQTTBroker; ?>';
-	port = <?php echo $MQTTPort; ?>;
+	<?php /* port = <?php echo $MQTTPort; ?>; */?>
+	port = 9001;
 	topic = '<?php echo $MQTTTopic; ?>';
 	useTLS = false;
 	username = null;
