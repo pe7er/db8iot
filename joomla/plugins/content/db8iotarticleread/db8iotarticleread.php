@@ -35,7 +35,7 @@ class PlgContentDb8iotarticleread extends JPlugin
 
 				$QoS  = $this->params->get('qos'); // 0
 
-				$message =  "Article `" . $article->title  . " (ID: " . $article->id  . ")` was visited from IP: ". $_SERVER['REMOTE_ADDR'] ." at ".date("r");
+				$message =  "Article `" . $article->title  . " (ID: " . $article->id  . ")`, visitor IP: ". $_SERVER['REMOTE_ADDR'] ." at ".date("r");
 				$MQTT->publish($channel, $message , $QoS);
 
 				$extramessage  = $this->params->get('extramessage'); // green_blink
