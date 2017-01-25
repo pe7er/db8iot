@@ -47,8 +47,8 @@ class PlgUserDb8iotLoginCheck extends JPlugin
 				break;
 		}
 
-		$errormsg = "ALARM! User " . $response['username'] . " from IP " . $_SERVER['REMOTE_ADDR']
-			. " at " . date("Y-m-d H:i:s") ;
+		$errormsg = "ALARM! login attempt: " . $response['username'] . " (" . $_SERVER['REMOTE_ADDR']
+			. ")"; // . date("Y-m-d H:i:s") ;
 
 
 		$MQTTBroker = $this->params->get('mqttbroker');

@@ -68,7 +68,7 @@ add_action( 'comment_post', 'show_message_function', 10, 0 );
 function sendGreenMQTT($error)
 {
 	//$MQTTBroker = '192.168.3.1';
-	$MQTTBroker = '192.168.0.29';
+	$MQTTBroker = '192.168.3.1';
 	$MQTTPort   = '1883';
 	$MQTTClient = 'WordPress website';
 
